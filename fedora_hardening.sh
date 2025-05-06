@@ -36,9 +36,14 @@ systemctl enable --now auditd
 
 echo "[+] Updating ClamAV and enabling daemon..."
 freshclam
-sudo systemctl enable clamd@scan.service
-sudo systemctl start clamd@scan-service
-systemctl enable --now clamd@scan
+
+if [ ! -f /etc/clamd.d/scan.conf ]; then
+    echo "[+] Creating ClamAV scan configuration from example..."
+    cp /usr/share/doc/clamav-server*/scan.conf.example /etc/clamd.d/scan.conf
+    sed -i 's/^Example/#Example/' /etc/clamd.d/scan.conf
+fi
+
+systemctl enable --now clamd@scan.service || echo "[!] Failed to enable clamd@scan.service — verify config manually."
 
 echo "[+] Enabling USBGuard..."
 systemctl enable --now usbguard
@@ -60,4 +65,4 @@ localectl set-keymap ch
 echo "[+] Creating BTRFS snapshot configuration..."
 snapper -c root create-config /
 
-echo "[+] Security hardening complete."
+echo "[+] Fedora hardening complete. Run 'lynis audit system' to perform a security audit."
