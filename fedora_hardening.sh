@@ -12,7 +12,7 @@ set -e
 
 echo "[+] Updating system..."
 dnf update -y && dnf upgrade -y
-dnf install -y dnf-automatic firewalld fail2ban audit lynis clamav clamav-update usbguard snapper
+dnf install -y dnf-automatic firewalld fail2ban audit lynis clamav clamav-update clamav-server clamav-server-systemd usbguard snapper
 
 echo "[+] Enabling automatic updates..."
 systemctl enable --now dnf-automatic.timer
