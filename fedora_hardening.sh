@@ -36,6 +36,8 @@ systemctl enable --now auditd
 
 echo "[+] Updating ClamAV and enabling daemon..."
 freshclam
+sudo systemctl enable clamd@scan.service
+sudo systemctl start clamd@scan-service
 systemctl enable --now clamd@scan
 
 echo "[+] Enabling USBGuard..."
