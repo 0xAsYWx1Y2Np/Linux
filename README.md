@@ -1,6 +1,27 @@
-# Linux
+# 🐧 Linux Scripts Collection
 
-> This is a test.
+**Author:** Alessandro Salucci  
+**Purpose:** Curated collection of Linux scripts for system hardening, automation, and troubleshooting across multiple distributions.
 
+---
 
-Thank you very much! tetetstest
+## 🎯 Purpose
+
+This repository provides modular and reusable shell scripts to automate and secure Linux systems, targeting both desktop and server environments.
+
+---
+
+## 🖥️ Supported Distributions
+
+- Fedora (Workstation & Server)
+
+---
+
+## 🚀 Usage
+
+- Clone the repository:
+
+```powershell
+git clone git@github.com:salucci/linux.git
+cd linux
+```
