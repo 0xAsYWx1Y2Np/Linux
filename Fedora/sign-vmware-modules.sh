@@ -1,18 +1,17 @@
 #!/bin/bash
-# Automatically sign VMware modules after DKMS builds
+# Automatically sign VMware modules after DKMS builds or manual installs
 
 KEY="/root/mok-keys/MOK.priv"
 CERT="/root/mok-keys/MOK.der"
 KERNEL=$(uname -r)
-MODPATH="/lib/modules/$KERNEL/extra"
+MODPATH="/lib/modules/$KERNEL/misc"  # <== angepasst!
 
-# Ensure keys exist
+# Check if keys exist
 if [[ ! -f "$KEY" || ! -f "$CERT" ]]; then
     echo "❌ MOK key or cert not found. Exiting."
     exit 1
 fi
 
-# Sign modules if present
 for mod in vmmon.ko vmnet.ko; do
     if [[ -f "$MODPATH/$mod" ]]; then
         echo "🔏 Signing $mod..."
