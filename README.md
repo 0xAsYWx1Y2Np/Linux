@@ -14,6 +14,7 @@ This repository provides modular and reusable shell scripts to automate and secu
 ## 🖥️ Supported Distributions
 
 - Fedora (Workstation & Server)
+- Ubuntu (Workstation & Server)
 
 ---
 
